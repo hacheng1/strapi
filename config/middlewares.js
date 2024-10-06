@@ -1,4 +1,4 @@
-module.exports = [
+module.exports = ({ env }) => ([
   'strapi::errors',
   {
     name: 'strapi::security',
@@ -14,7 +14,13 @@ module.exports = [
       },
     },
   },
-  'strapi::cors',
+  {
+    name: 'strapi::cors',
+    config: {
+      enabled: true,
+      origin: ['http://localhost:3000', 'https://your-nextjs-app.com'], // Replace with your domains
+    },
+  },
   'strapi::poweredBy',
   'strapi::logger',
   'strapi::query',
@@ -22,4 +28,4 @@ module.exports = [
   'strapi::session',
   'strapi::favicon',
   'strapi::public',
-];
+]);
